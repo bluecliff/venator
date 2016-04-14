@@ -1,10 +1,8 @@
-# Ubuntu 14.04，Trusty Tahr（可靠的塔尔羊）发行版
+# Ubuntu 14.04
 FROM ubuntu:trusty
-
-# 道客船长荣誉出品
 MAINTAINER bluecliff <lijsf@sina.com>
 
-# APT 自动安装 PHP 相关的依赖包，如需其他依赖包在此添加
+
 RUN apt-get update && \
     apt-get install -y python3 \
                        python3-dev \
@@ -18,9 +16,9 @@ RUN apt-get update && \
 # 配置默认放置 App 的目录
 RUN mkdir -p /app
 WORKDIR /app
-
+ADD app.py /app/
 ADD requirements.txt requirements.txt
-RUN pip install -r requirements.txt
+RUN pip3 install -r requirements.txt
 
 COPY docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
 RUN chmod +x /usr/local/bin/docker-entrypoint.sh
