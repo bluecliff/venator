@@ -17,6 +17,7 @@ RUN apt-get update && \
 RUN mkdir -p /app
 WORKDIR /app
 ADD app.py /app/
+ADD resume_light_blue /app/
 ADD requirements.txt requirements.txt
 RUN pip3 install -r requirements.txt
 
